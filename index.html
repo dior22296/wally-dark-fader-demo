@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wally Dark Fader — Barber in Amarillo, TX | Paul Coone</title>
+<meta name="description" content="Wally Dark Fader — Paul Coone, barber in Amarillo, TX. Precision fades, hot towel service. Book online anytime through Square. 3801 Olsen Blvd, Amarillo, TX 79109. Call (806) 679-7920.">
+<style>
+  :root{
+    --bg:#0a0a0b;
+    --bg2:#101013;
+    --panel:#16161b;
+    --panel2:#1c1c22;
+    --gold:#c9a227;
+    --gold-bright:#e6c65c;
+    --gold-dim:#8a711f;
+    --ink:#f3eee1;
+    --muted:#b8b2a2;
+    --line:#2a2a31;
+    --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;
+    padding-bottom:84px;
+  }
+  h1,h2,h3,.brand-font{
+    font-family:Georgia,"Times New Roman",serif;
+    letter-spacing:.02em;
+  }
+  a{color:var(--gold-bright)}
+  img,svg{display:block;max-width:100%}
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:60;
+    background:rgba(10,10,11,.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:1100px;margin:0 auto;padding:10px 16px;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+  }
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+  .logo-mark{
+    width:40px;height:40px;border-radius:50%;
+    border:2px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:Georgia,serif;font-weight:bold;color:var(--gold-bright);font-size:15px;
+    background:radial-gradient(circle at 35% 30%, #26221a, #0d0d0f 70%);
+    flex:0 0 auto;
+  }
+  .logo-text{line-height:1.1}
+  .logo-text .name{font-family:Georgia,serif;font-size:17px;letter-spacing:.06em}
+  .logo-text .sub{font-size:11px;color:var(--muted);letter-spacing:.18em;text-transform:uppercase}
+  .top-actions{display:flex;gap:8px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 18px;border-radius:999px;
+    font-weight:700;font-size:15px;text-decoration:none;
+    border:1px solid transparent;cursor:pointer;
+    transition:transform .12s ease, background .12s ease;
+  }
+  .btn:active{transform:scale(.97)}
+  .btn-gold{background:linear-gradient(180deg,var(--gold-bright),var(--gold));color:#171204}
+  .btn-gold:hover{background:linear-gradient(180deg,#f0d47a,var(--gold-bright))}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--gold)}
+  .btn svg{width:17px;height:17px;flex:0 0 auto}
+
+  /* ---------- Layout ---------- */
+  .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+  section{padding:52px 0 8px}
+  .section-head{margin-bottom:20px}
+  .kicker{
+    color:var(--gold);text-transform:uppercase;letter-spacing:.24em;
+    font-size:12px;font-weight:700;margin-bottom:6px;
+  }
+  .section-head h2{font-size:30px;line-height:1.15}
+  .section-head p{color:var(--muted);margin-top:8px;max-width:640px}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 480px at 85% -10%, rgba(201,162,39,.16), transparent 60%),
+      radial-gradient(700px 500px at -10% 110%, rgba(201,162,39,.08), transparent 55%),
+      linear-gradient(180deg,#0d0d10, var(--bg));
+    border-bottom:1px solid var(--line);
+    padding:44px 0 54px;
+  }
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+  @media(min-width:880px){.hero-grid{grid-template-columns:1.05fr .95fr}}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(201,162,39,.12);border:1px solid var(--gold-dim);
+    color:var(--gold-bright);border-radius:999px;
+    padding:6px 14px;font-size:13px;font-weight:600;letter-spacing:.04em;
+  }
+  .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--gold-bright)}
+  .hero h1{font-size:46px;line-height:1.04;margin:16px 0 6px;text-transform:uppercase}
+  .hero h1 .gold{color:var(--gold-bright)}
+  .hero .tagline{font-size:19px;color:var(--ink);font-family:Georgia,serif;font-style:italic}
+  .hero p.lede{color:var(--muted);margin:14px 0 22px;max-width:520px;font-size:16px}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:10px}
+  .hero-ctas .btn{padding:14px 22px;font-size:16px}
+  .hero-facts{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:22px;color:var(--muted);font-size:14px}
+  .hero-facts span{display:inline-flex;align-items:center;gap:7px}
+  .hero-facts svg{width:15px;height:15px;stroke:var(--gold)}
+  .hero-art{
+    border:1px solid var(--line);border-radius:20px;overflow:hidden;
+    background:linear-gradient(180deg,#17171c,#0c0c0e);
+    box-shadow:0 24px 60px rgba(0,0,0,.5);
+  }
+
+  /* ---------- Cards / services ---------- */
+  .cards{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(min-width:760px){.cards{grid-template-columns:1fr 1fr}}
+  .card{
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius);padding:22px;
+  }
+  .card.featured{
+    border-color:var(--gold-dim);
+    background:linear-gradient(180deg,#1d1a10,var(--panel) 55%);
+    grid-column:1 / -1;
+  }
+  .card .icon{
+    width:46px;height:46px;border-radius:12px;
+    background:rgba(201,162,39,.12);border:1px solid var(--gold-dim);
+    display:flex;align-items:center;justify-content:center;margin-bottom:12px;
+  }
+  .card .icon svg{width:24px;height:24px;stroke:var(--gold-bright)}
+  .card h3{font-size:20px;margin-bottom:6px}
+  .card p{color:var(--muted);font-size:15px}
+  .price-row{display:flex;align-items:baseline;gap:12px;margin:12px 0 4px;flex-wrap:wrap}
+  .price{font-family:Georgia,serif;font-size:38px;color:var(--gold-bright);line-height:1}
+  .duration{color:var(--muted);font-size:14px}
+  .card .btn{margin-top:14px}
+
+  /* ---------- Gallery ---------- */
+  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(min-width:760px){.gallery{grid-template-columns:repeat(4,1fr)}}
+  .g-item{
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel);
+  }
+  .g-item figure{aspect-ratio:4/5;background:#0c0c0e}
+  .g-item figcaption{padding:10px 12px;font-size:13.5px;color:var(--muted)}
+  .g-item figcaption strong{color:var(--ink);display:block;font-size:14.5px}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr;gap:20px;align-items:start}
+  @media(min-width:820px){.about-grid{grid-template-columns:.9fr 1.1fr}}
+  .about-art{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:linear-gradient(180deg,#17171c,#0c0c0e)}
+  .about-copy p{color:var(--muted);margin-bottom:12px;font-size:16px}
+  .about-copy p strong{color:var(--ink)}
+  .social-row{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+  .social-row a{
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    border:1px solid var(--line);border-radius:999px;padding:9px 16px;
+    color:var(--ink);font-size:14px;font-weight:600;background:var(--panel);
+  }
+  .social-row a:hover{border-color:var(--gold)}
+  .social-row svg{width:17px;height:17px}
+
+  /* ---------- Hours & location ---------- */
+  .visit-grid{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(min-width:820px){.visit-grid{grid-template-columns:1fr 1fr}}
+  table.hours{width:100%;border-collapse:collapse;font-size:15px}
+  table.hours td{padding:9px 4px;border-bottom:1px solid var(--line)}
+  table.hours tr:last-child td{border-bottom:none}
+  table.hours td.day{font-weight:700;width:44%}
+  table.hours td.time{color:var(--muted);text-align:right}
+  table.hours tr.today td{color:var(--gold-bright)}
+  table.hours tr.today td.time{color:var(--gold-bright)}
+  .addr{font-size:17px;line-height:1.5}
+  .addr .city{color:var(--muted)}
+  .visit-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+
+  /* ---------- Book banner ---------- */
+  .book-banner{
+    margin-top:52px;border:1px solid var(--gold-dim);border-radius:20px;
+    background:
+      radial-gradient(600px 260px at 50% -30%, rgba(201,162,39,.22), transparent 65%),
+      linear-gradient(180deg,#1a170d,#12100a);
+    padding:36px 22px;text-align:center;
+  }
+  .book-banner h2{font-size:30px;margin-bottom:8px}
+  .book-banner p{color:var(--muted);max-width:520px;margin:0 auto 20px}
+  .book-banner .btn{padding:15px 30px;font-size:17px}
+  .book-banner .or-call{margin-top:14px;font-size:15px;color:var(--muted)}
+  .book-banner .or-call a{font-weight:700}
+
+  /* ---------- Footer ---------- */
+  footer{
+    margin-top:56px;border-top:1px solid var(--line);
+    background:var(--bg2);padding:30px 0 12px;
+  }
+  .foot-grid{display:grid;grid-template-columns:1fr;gap:18px}
+  @media(min-width:760px){.foot-grid{grid-template-columns:1.2fr 1fr 1fr}}
+  footer h4{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  footer p, footer a{color:var(--muted);font-size:14.5px}
+  footer a{text-decoration:none}
+  footer a:hover{color:var(--gold-bright)}
+  .foot-list{list-style:none}
+  .foot-list li{margin-bottom:7px}
+  .credit{
+    margin-top:24px;padding-top:14px;border-top:1px solid var(--line);
+    text-align:center;color:var(--muted);font-size:13px;letter-spacing:.05em;
+  }
+
+  /* ---------- Bottom icon nav ---------- */
+  .iconnav{
+    position:fixed;left:0;right:0;bottom:0;z-index:70;
+    background:rgba(13,13,16,.97);border-top:1px solid var(--line);
+    display:flex;justify-content:space-around;
+    padding:8px 4px calc(8px + env(safe-area-inset-bottom));
+  }
+  .iconnav a{
+    display:flex;flex-direction:column;align-items:center;gap:3px;
+    color:var(--muted);text-decoration:none;font-size:11px;font-weight:600;
+    letter-spacing:.06em;padding:4px 10px;border-radius:10px;min-width:58px;
+  }
+  .iconnav a svg{width:22px;height:22px;stroke:currentColor}
+  .iconnav a:hover,.iconnav a.active{color:var(--gold-bright)}
+  @media(min-width:880px){
+    body{padding-bottom:0}
+    .iconnav{position:sticky;bottom:auto;top:57px;justify-content:center;gap:34px}
+    .iconnav a{flex-direction:row;font-size:13px;gap:7px}
+  }
+
+  /* ---------- Chat widget ---------- */
+  .chat-fab{
+    position:fixed;right:16px;bottom:96px;z-index:80;
+    width:58px;height:58px;border-radius:50%;border:1px solid var(--gold-dim);
+    background:linear-gradient(180deg,var(--gold-bright),var(--gold));
+    color:#171204;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 28px rgba(0,0,0,.55);
+  }
+  @media(min-width:880px){.chat-fab{bottom:22px}}
+  .chat-fab svg{width:27px;height:27px}
+  .chat-panel{
+    position:fixed;right:12px;bottom:164px;z-index:81;
+    width:min(350px,calc(100vw - 24px));max-height:min(520px,70vh);
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    display:none;flex-direction:column;overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,.6);
+  }
+  @media(min-width:880px){.chat-panel{bottom:90px}}
+  .chat-panel.open{display:flex}
+  .chat-head{
+    background:#1d1a10;border-bottom:1px solid var(--gold-dim);
+    padding:12px 14px;display:flex;align-items:center;gap:10px;
+  }
+  .chat-head .avatar{
+    width:34px;height:34px;border-radius:50%;border:1.5px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:Georgia,serif;color:var(--gold-bright);font-size:12px;font-weight:bold;flex:0 0 auto;
+  }
+  .chat-head .t{line-height:1.2}
+  .chat-head .t strong{display:block;font-size:14.5px}
+  .chat-head .t span{font-size:12px;color:var(--muted)}
+  .chat-head button{
+    margin-left:auto;background:none;border:none;color:var(--muted);
+    font-size:20px;cursor:pointer;line-height:1;padding:4px;
+  }
+  .chat-body{padding:12px;overflow-y:auto;display:flex;flex-direction:column;gap:8px}
+  .msg{max-width:86%;padding:9px 12px;border-radius:14px;font-size:14px;line-height:1.45}
+  .msg.bot{background:var(--panel2);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:4px}
+  .msg.user{background:linear-gradient(180deg,var(--gold-bright),var(--gold));color:#171204;align-self:flex-end;border-bottom-right-radius:4px;font-weight:600}
+  .msg a{color:var(--gold-bright);font-weight:700}
+  .msg.user a{color:#171204}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 12px 10px}
+  .chips button{
+    background:transparent;border:1px solid var(--gold-dim);color:var(--gold-bright);
+    border-radius:999px;padding:6px 12px;font-size:12.5px;cursor:pointer;font-weight:600;
+  }
+  .chips button:hover{background:rgba(201,162,39,.12)}
+  .chat-input{display:flex;border-top:1px solid var(--line)}
+  .chat-input input{
+    flex:1;background:var(--bg2);border:none;color:var(--ink);
+    padding:12px;font-size:14px;outline:none;min-width:0;
+  }
+  .chat-input button{
+    background:linear-gradient(180deg,var(--gold-bright),var(--gold));border:none;
+    color:#171204;font-weight:800;padding:0 18px;cursor:pointer;font-size:14px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== TOP BAR ===================== -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="logo" href="#home" aria-label="Wally Dark Fader home">
+      <span class="logo-mark">W</span>
+      <span class="logo-text">
+        <span class="name">WALLY DARK FADER</span><br>
+        <span class="sub">Barber · Amarillo, TX</span>
+      </span>
+    </a>
+    <div class="top-actions">
+      <a class="btn btn-ghost" href="tel:+18066797920">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (806) 679-7920
+      </a>
+      <a class="btn btn-gold" href="https://squareup.com/appointments/book/170291A6Y98BN" target="_blank" rel="noopener">Book Now</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== ICON NAV ===================== -->
+<nav class="iconnav" aria-label="Site sections">
+  <a href="#home">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
+    Home
+  </a>
+  <a href="#services">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 7.9 20 20"/><path d="M8.1 16.1 20 4"/><path d="M14.5 9.5 12 12"/></svg>
+    Services
+  </a>
+  <a href="#gallery">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m4 18 5-5 3 3 3-3 5 5"/></svg>
+    Gallery
+  </a>
+  <a href="#book">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="m9.5 16.5 2 2 4-4"/></svg>
+    Book
+  </a>
+  <a href="#visit">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+    Visit
+  </a>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<div class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge"><span class="dot"></span> Amarillo, TX · Book online anytime</span>
+      <h1>Wally <span class="gold">Dark</span> Fader</h1>
+      <p class="tagline">Paul Coone — the fade is the signature.</p>
+      <p class="lede">Solo barber in Amarillo, Texas, known for clean, sharp fades. Every appointment is one-on-one chair time — book online through Square in under a minute, or call the shop line.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-gold" href="https://squareup.com/appointments/book/170291A6Y98BN" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg>
+          Book an Appointment
+        </a>
+        <a class="btn btn-ghost" href="tel:+18066797920">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (806) 679-7920
+        </a>
+      </div>
+      <div class="hero-facts">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg> 3801 Olsen Blvd, Amarillo</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Open Mon–Sat · Closed Sun</span>
+      </div>
+    </div>
+    <div class="hero-art" role="img" aria-label="Illustration of a barber giving a client a fade haircut in a dark barbershop">
+      <svg viewBox="0 0 640 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1b1b21"/><stop offset="1" stop-color="#0b0b0d"/>
+          </linearGradient>
+          <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e6c65c" stop-opacity=".55"/><stop offset="1" stop-color="#e6c65c" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="fadeCut" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3a3a42"/><stop offset=".55" stop-color="#232329"/><stop offset="1" stop-color="#c8b490"/>
+          </linearGradient>
+          <linearGradient id="cape" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#24242b"/><stop offset="1" stop-color="#101014"/>
+          </linearGradient>
+        </defs>
+        <rect width="640" height="520" fill="url(#wall)"/>
+        <polygon points="270,40 370,40 430,300 210,300" fill="url(#glow)"/>
+        <circle cx="320" cy="42" r="10" fill="#e6c65c"/>
+        <rect x="60" y="70" width="86" height="120" rx="8" fill="#121216" stroke="#2c2c33"/>
+        <rect x="72" y="82" width="62" height="96" rx="5" fill="#181820"/>
+        <path d="M84 150 q19-34 38 0" stroke="#c9a227" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="103" cy="112" r="13" fill="none" stroke="#c9a227" stroke-width="3"/>
+        <rect x="494" y="70" width="86" height="120" rx="8" fill="#121216" stroke="#2c2c33"/>
+        <path d="M512 160 v-52 M537 160 v-70 M562 160 v-44" stroke="#c9a227" stroke-width="5" stroke-linecap="round"/>
+        <rect x="0" y="430" width="640" height="90" fill="#08080a"/>
+        <path d="M0 430h640" stroke="#2c2c33" stroke-width="2"/>
+        <!-- client -->
+        <g>
+          <path d="M268 300 q52-16 104 0 l14 130 H254 Z" fill="url(#cape)"/>
+          <path d="M268 300 q52-16 104 0 l3 26 q-55 14-110 0 Z" fill="#c9a227" opacity=".85"/>
+          <circle cx="320" cy="238" r="46" fill="#c8a075"/>
+          <path d="M274 232 a46 46 0 0 1 92 0 l0 6 q-8-26-24-30 q4 10 2 14 q-14-16-40-14 q-22 2-28 30 Z" fill="url(#fadeCut)"/>
+          <path d="M274 236 q-3 22 6 34 l6-4 q-8-14-6-30 Z" fill="#a8825e"/>
+          <path d="M366 236 q3 22-6 34 l-6-4 q8-14 6-30 Z" fill="#a8825e"/>
+        </g>
+        <!-- barber -->
+        <g>
+          <path d="M428 268 q40-10 66 8 l10 154 h-84 l-6-120 q2-30 14-42Z" fill="#191920"/>
+          <path d="M428 268 q40-10 66 8 l3 44 q-36 10-72 2 Z" fill="#232329"/>
+          <circle cx="462" cy="212" r="34" fill="#8a5a34"/>
+          <path d="M428 206 a34 34 0 0 1 68 0 q-2-20-16-26 q2 8 0 10 q-10-12-30-11 q-18 1-22 27Z" fill="#141416"/>
+          <path d="M430 292 q-34 26-58 22" stroke="#8a5a34" stroke-width="17" fill="none" stroke-linecap="round"/>
+          <g transform="rotate(-18 366 306)">
+            <rect x="352" y="294" width="30" height="20" rx="5" fill="#c9a227"/>
+            <rect x="356" y="288" width="22" height="8" rx="3" fill="#d8d8de"/>
+            <rect x="359" y="314" width="16" height="10" rx="3" fill="#2c2c33"/>
+          </g>
+          <path d="M492 300 q26 8 34 34" stroke="#8a5a34" stroke-width="16" fill="none" stroke-linecap="round"/>
+          <path d="M520 330 l26 14" stroke="#d8d8de" stroke-width="5" stroke-linecap="round"/>
+          <path d="M546 344 l-4 10 M546 344 l10 2" stroke="#d8d8de" stroke-width="4" stroke-linecap="round"/>
+        </g>
+        <!-- chair base -->
+        <rect x="286" y="428" width="68" height="10" rx="5" fill="#2c2c33"/>
+        <rect x="314" y="404" width="12" height="26" fill="#2c2c33"/>
+        <text x="320" y="492" text-anchor="middle" font-family="Georgia,serif" font-size="21" letter-spacing="6" fill="#c9a227">WALLY DARK FADER</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SERVICES ===================== -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Services</p>
+      <h2>In the chair</h2>
+      <p>One barber, one chair, full attention on your cut. Booking and pricing are handled through Square — tap any Book button to grab your slot.</p>
+    </div>
+    <div class="cards">
+      <div class="card featured">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 7.9 20 20"/><path d="M8.1 16.1 20 4"/></svg>
+        </div>
+        <h3>Haircut / Hot Towel / Hair Enhancement</h3>
+        <p>The full session: a precision haircut built around the fade work Paul is known for, finished with a hot towel and hair enhancement for a sharp, clean look walking out the door.</p>
+        <div class="price-row">
+          <span class="price">$45</span>
+          <span class="duration">· 1 hour appointment</span>
+        </div>
+        <a class="btn btn-gold" href="https://squareup.com/appointments/book/170291A6Y98BN" target="_blank" rel="noopener">Book This Service</a>
+      </div>
+      <div class="card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 Q12 4 20 20"/><path d="M6.5 15.5h11"/><path d="M8.5 11h7"/></svg>
+        </div>
+        <h3>Precision Fades</h3>
+        <p>Fades are the signature at Wally Dark Fader — Paul's chair work is built on them, and his Instagram is full of fade work. Blended clean, lined up sharp, and shaped to your head and hair type.</p>
+      </div>
+      <div class="card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9 q8-5 16 0 v6 q-8 5-16 0 Z"/><path d="M7 13.5 q2.5 1.6 5 0 q2.5 1.6 5 0"/><path d="M8 5.5 q1.5-2 0-3.5 M13 5.5 q1.5-2 0-3.5 M18 5.5 q1.5-2 0-3.5"/></svg>
+        </div>
+        <h3>Hot Towel Finish</h3>
+        <p>The classic barbershop finish — a hot towel service that cleans up the edges and sends you out feeling as sharp as you look.</p>
+      </div>
+      <div class="card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11l3 4-3 12H8L5 8Z"/><path d="M8 8h10"/><path d="M11 12h5"/></svg>
+        </div>
+        <h3>Beard &amp; Detail Work</h3>
+        <p>Beard shaping and detail line-ups that keep the whole look together between full cuts — crisp edges, clean neckline, no shortcuts.</p>
+      </div>
+      <div class="card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="m9.5 16.5 2 2 4-4"/></svg>
+        </div>
+        <h3>Easy Online Booking</h3>
+        <p>Every appointment books through Square — pick your time, get your confirmation, and show up. Questions first? Call <a href="tel:+18066797920">(806) 679-7920</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Gallery</p>
+      <h2>The work speaks</h2>
+      <p>Paul posts his cuts on Instagram — 374 posts of real chair work. Follow <a href="https://www.instagram.com/_wallydarkfader05" target="_blank" rel="noopener">@_wallydarkfader05</a> to see the latest.</p>
+    </div>
+    <div class="gallery">
+      <div class="g-item">
+        <figure>
+          <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a skin fade haircut, side profile">
+            <defs>
+              <linearGradient id="gFade" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#3d3d46"/><stop offset=".5" stop-color="#26262c"/><stop offset="1" stop-color="#c8a075"/>
+              </linearGradient>
+            </defs>
+            <rect width="320" height="400" fill="#0c0c0e"/>
+            <circle cx="160" cy="180" r="118" fill="#141419"/>
+            <circle cx="160" cy="185" r="86" fill="#c8a075"/>
+            <path d="M74 178 a86 86 0 0 1 172 0 l0 10 q-10-44-34-52 q6 14 2 20 q-20-24-58-22 q-44 2-66 30 q-12 16-14 30 Z" fill="url(#gFade)"/>
+            <path d="M76 190 q-4 34 10 52 l10-6 q-12-22-10-46 Z" fill="#a8825e"/>
+            <path d="M244 190 q4 34-10 52 l-10-6 q12-22 10-46 Z" fill="#a8825e"/>
+            <path d="M96 300 q64 26 128 0 l6 46 H90 Z" fill="#1d1d23"/>
+            <path d="M96 300 q64 26 128 0 l2 14 q-66 22-132 0 Z" fill="#c9a227"/>
+            <text x="160" y="382" text-anchor="middle" font-family="Georgia,serif" font-size="15" letter-spacing="4" fill="#c9a227">SKIN FADE</text>
+          </svg>
+        </figure>
+        <figcaption><strong>The Fade</strong>Blended from skin to top — the Wally Dark Fader signature.</figcaption>
+      </div>
+      <div class="g-item">
+        <figure>
+          <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a hot towel barber service">
+            <rect width="320" height="400" fill="#0c0c0e"/>
+            <circle cx="160" cy="180" r="118" fill="#141419"/>
+            <path d="M88 150 q72-34 144 0 l-6 74 q-66 26-132 0 Z" fill="#e8e4da"/>
+            <path d="M88 150 q72-34 144 0 l-2 18 q-70-30-140 0 Z" fill="#c9a227"/>
+            <path d="M104 128 q10-16 0-30 M160 122 q10-16 0-30 M216 128 q10-16 0-30" stroke="#8f8a7c" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <circle cx="118" cy="262" r="17" fill="#c8a075"/>
+            <circle cx="202" cy="262" r="17" fill="#c8a075"/>
+            <path d="M96 316 q64 26 128 0 l6 40 H90 Z" fill="#1d1d23"/>
+            <text x="160" y="382" text-anchor="middle" font-family="Georgia,serif" font-size="15" letter-spacing="4" fill="#c9a227">HOT TOWEL</text>
+          </svg>
+        </figure>
+        <figcaption><strong>Hot Towel Finish</strong>The classic close to the full service session.</figcaption>
+      </div>
+      <div class="g-item">
+        <figure>
+          <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of barber tools — clippers, razor and comb">
+            <rect width="320" height="400" fill="#0c0c0e"/>
+            <circle cx="160" cy="180" r="118" fill="#141419"/>
+            <g transform="rotate(-14 120 190)">
+              <rect x="98" y="118" width="46" height="118" rx="14" fill="#232329" stroke="#c9a227" stroke-width="2"/>
+              <rect x="104" y="104" width="34" height="20" rx="4" fill="#d8d8de"/>
+              <path d="M108 108v12 M116 108v12 M124 108v12 M132 108v12" stroke="#8a8a92" stroke-width="3"/>
+              <circle cx="121" cy="160" r="8" fill="#c9a227"/>
+              <rect x="110" y="196" width="22" height="6" rx="3" fill="#3a3a42"/>
+            </g>
+            <g transform="rotate(24 214 200)">
+              <rect x="196" y="120" width="14" height="86" rx="6" fill="#c9a227"/>
+              <path d="M203 206 l26 44" stroke="#d8d8de" stroke-width="8" stroke-linecap="round"/>
+              <path d="M229 250 l14 4 M229 250 l4 14" stroke="#d8d8de" stroke-width="5" stroke-linecap="round"/>
+            </g>
+            <g transform="rotate(-4 160 300)">
+              <rect x="92" y="288" width="136" height="13" rx="6" fill="#232329" stroke="#3a3a42"/>
+              <path d="M100 301v16 M114 301v16 M128 301v16 M142 301v16 M156 301v16 M170 301v16 M184 301v16 M198 301v16 M212 301v16" stroke="#232329" stroke-width="6"/>
+            </g>
+            <text x="160" y="382" text-anchor="middle" font-family="Georgia,serif" font-size="15" letter-spacing="4" fill="#c9a227">THE TOOLS</text>
+          </svg>
+        </figure>
+        <figcaption><strong>Tools of the Trade</strong>Clippers, razor and comb — detail work done right.</figcaption>
+      </div>
+      <div class="g-item">
+        <figure>
+          <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a barber chair in a dark barbershop">
+            <rect width="320" height="400" fill="#0c0c0e"/>
+            <rect x="42" y="52" width="236" height="240" rx="10" fill="#121216" stroke="#2c2c33"/>
+            <rect x="56" y="66" width="94" height="120" rx="6" fill="#181820"/>
+            <rect x="170" y="66" width="94" height="120" rx="6" fill="#181820"/>
+            <path d="M72 158 q31-50 62 0" stroke="#c9a227" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M186 158 v-64 M218 158 v-80 M250 158 v-56" stroke="#c9a227" stroke-width="5" stroke-linecap="round"/>
+            <g>
+              <rect x="118" y="196" width="84" height="66" rx="12" fill="#1d1d23" stroke="#c9a227" stroke-width="2"/>
+              <rect x="132" y="176" width="56" height="28" rx="10" fill="#232329" stroke="#3a3a42"/>
+              <rect x="104" y="222" width="18" height="34" rx="8" fill="#232329"/>
+              <rect x="198" y="222" width="18" height="34" rx="8" fill="#232329"/>
+              <rect x="152" y="262" width="16" height="26" fill="#2c2c33"/>
+              <rect x="116" y="288" width="88" height="9" rx="4" fill="#2c2c33"/>
+              <path d="M126 312 h68 M138 297 v15 M182 297 v15" stroke="#2c2c33" stroke-width="6" stroke-linecap="round"/>
+            </g>
+            <text x="160" y="382" text-anchor="middle" font-family="Georgia,serif" font-size="15" letter-spacing="4" fill="#c9a227">THE CHAIR</text>
+          </svg>
+        </figure>
+        <figcaption><strong>One Chair, One Barber</strong>Every appointment is Paul's full attention, start to finish.</figcaption>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">About</p>
+      <h2>Meet Paul Coone</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-art" role="img" aria-label="Illustration of barber Paul Coone's portrait monogram">
+        <svg viewBox="0 0 520 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="pFade" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#3d3d46"/><stop offset=".55" stop-color="#26262c"/><stop offset="1" stop-color="#8a5a34"/>
+            </linearGradient>
+          </defs>
+          <rect width="520" height="460" fill="#101014"/>
+          <circle cx="260" cy="205" r="150" fill="#17171d"/>
+          <circle cx="260" cy="205" r="150" fill="none" stroke="#c9a227" stroke-width="2" opacity=".6"/>
+          <circle cx="260" cy="196" r="88" fill="#8a5a34"/>
+          <path d="M172 188 a88 88 0 0 1 176 0 l0 10 q-10-46-36-56 q6 14 2 22 q-22-26-62-24 q-46 2-70 32 q-12 16-14 32 Z" fill="url(#pFade)"/>
+          <path d="M196 262 q64 30 128 0 q6 44-14 62 q-50 18-100 0 q-20-18-14-62Z" fill="#141416"/>
+          <path d="M196 262 q64 30 128 0 l-2 16 q-62 26-124 0 Z" fill="#232329"/>
+          <path d="M168 356 q92-30 184 0 l10 62 H158 Z" fill="#191920"/>
+          <path d="M168 356 q92-30 184 0 l3 22 q-95 28-190 0 Z" fill="#c9a227" opacity=".9"/>
+          <text x="260" y="440" text-anchor="middle" font-family="Georgia,serif" font-size="17" letter-spacing="5" fill="#c9a227">PAUL COONE · AMARILLO, TX</text>
+        </svg>
+      </div>
+      <div class="about-copy">
+        <p><strong>Paul Coone is the barber behind Wally Dark Fader</strong> — a solo barber working in Amarillo, Texas, at 3801 Olsen Blvd.</p>
+        <p>Fades are his signature. Paul posts his chair work on Instagram as <strong>@_wallydarkfader05</strong> — 374 posts of cuts — so you can see his work before you ever sit down.</p>
+        <p>Because it's a one-barber shop, every appointment is Paul himself: no hand-offs, no rush — just Paul, focused on your cut.</p>
+        <p>Today, booking runs through Paul's Square page — pick your time online, any time of day. Prefer to talk first? Call <a href="tel:+18066797920"><strong>(806) 679-7920</strong></a> or email <a href="mailto:paulcoone24@gmail.com">paulcoone24@gmail.com</a>.</p>
+        <div class="social-row">
+          <a href="https://www.instagram.com/_wallydarkfader05" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e6c65c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#e6c65c" stroke="none"/></svg>
+            Instagram
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100033966816747" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e6c65c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h3v4h-3c-.6 0-1 .4-1 1v3h4l-.5 4H14v7h-4v-7H7v-4h3V9c0-2.8 2.2-5 5-5z"/></svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VISIT ===================== -->
+<section id="visit">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Visit</p>
+      <h2>Hours &amp; location</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="card">
+        <h3 style="margin-bottom:10px">Shop Hours</h3>
+        <table class="hours" id="hoursTable">
+          <tr data-day="0"><td class="day">Sunday</td><td class="time">Closed</td></tr>
+          <tr data-day="1"><td class="day">Monday</td><td class="time">10:00 AM – 1:00 PM</td></tr>
+          <tr data-day="2"><td class="day">Tuesday</td><td class="time">10:00 AM – 6:00 PM</td></tr>
+          <tr data-day="3"><td class="day">Wednesday</td><td class="time">10:00 AM – 6:00 PM</td></tr>
+          <tr data-day="4"><td class="day">Thursday</td><td class="time">10:00 AM – 6:00 PM</td></tr>
+          <tr data-day="5"><td class="day">Friday</td><td class="time">10:00 AM – 6:00 PM</td></tr>
+          <tr data-day="6"><td class="day">Saturday</td><td class="time">9:30 AM – 5:00 PM</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:10px">Find the Shop</h3>
+        <p class="addr">Wally Dark Fader<br>3801 Olsen Blvd<br><span class="city">Amarillo, TX 79109</span></p>
+        <p style="margin-top:12px">Phone: <a href="tel:+18066797920"><strong>(806) 679-7920</strong></a><br>
+        Email: <a href="mailto:paulcoone24@gmail.com">paulcoone24@gmail.com</a></p>
+        <div class="visit-actions">
+          <a class="btn btn-gold" href="https://www.google.com/maps/search/?api=1&amp;query=3801+Olsen+Blvd+Amarillo+TX+79109" target="_blank" rel="noopener">Get Directions</a>
+          <a class="btn btn-ghost" href="tel:+18066797920">Call the Shop</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== BOOK ===================== -->
+    <div class="book-banner" id="book">
+      <p class="kicker">Book</p>
+      <h2>Your chair is waiting</h2>
+      <p>Booking takes under a minute on Paul's Square page — choose the Haircut / Hot Towel / Hair Enhancement session, pick your time, and you're set.</p>
+      <a class="btn btn-gold" href="https://squareup.com/appointments/book/170291A6Y98BN" target="_blank" rel="noopener">Book on Square</a>
+      <p class="or-call">or call <a href="tel:+18066797920">(806) 679-7920</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Wally Dark Fader</h4>
+        <p>Paul Coone, barber in Amarillo, TX.<br>Precision fades, hot towel finish,<br>one-on-one chair time.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="foot-list">
+          <li><a href="tel:+18066797920">(806) 679-7920</a></li>
+          <li><a href="mailto:paulcoone24@gmail.com">paulcoone24@gmail.com</a></li>
+          <li>3801 Olsen Blvd, Amarillo, TX 79109</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow &amp; Book</h4>
+        <ul class="foot-list">
+          <li><a href="https://www.instagram.com/_wallydarkfader05" target="_blank" rel="noopener">Instagram — @_wallydarkfader05</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=100033966816747" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://squareup.com/appointments/book/170291A6Y98BN" target="_blank" rel="noopener">Book on Square</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="credit">Built by Pinnacle Tech, Orlando FL</p>
+  </div>
+</footer>
+
+<!-- ===================== CHAT WIDGET ===================== -->
+<button class="chat-fab" id="chatFab" aria-label="Chat with the shop assistant">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</button>
+<div class="chat-panel" id="chatPanel" role="dialog" aria-label="Shop assistant chat">
+  <div class="chat-head">
+    <span class="avatar">W</span>
+    <span class="t"><strong>Wally Dark Fader</strong><span>Shop assistant — ask me anything</span></span>
+    <button id="chatClose" aria-label="Close chat">&times;</button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chips" id="chatChips">
+    <button data-q="How much is a haircut?">Prices</button>
+    <button data-q="What are your hours?">Hours</button>
+    <button data-q="Where are you located?">Location</button>
+    <button data-q="How do I book?">Book</button>
+  </div>
+  <form class="chat-input" id="chatForm">
+    <input type="text" id="chatText" placeholder="Ask about cuts, hours, booking…" autocomplete="off" aria-label="Type your question">
+    <button type="submit">Send</button>
+  </form>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var BOOK = "https://squareup.com/appointments/book/170291A6Y98BN";
+  var PHONE_DISPLAY = "(806) 679-7920";
+  var PHONE_TEL = "tel:+18066797920";
+
+  /* Highlight today's row in the hours table */
+  var today = new Date().getDay();
+  var rows = document.querySelectorAll("#hoursTable tr");
+  rows.forEach(function(r){ if (parseInt(r.getAttribute("data-day"),10) === today) r.classList.add("today"); });
+
+  /* Icon nav active state on scroll */
+  var navLinks = document.querySelectorAll(".iconnav a");
+  function setActive(){
+    var ids = ["home","services","gallery","book","visit"];
+    var current = "home";
+    ids.forEach(function(id){
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 140) current = id;
+    });
+    navLinks.forEach(function(a){ a.classList.toggle("active", a.getAttribute("href") === "#" + current); });
+  }
+  window.addEventListener("scroll", setActive, {passive:true});
+  setActive();
+
+  /* ---------- Chat assistant (answers only from the shop fact base) ---------- */
+  var HOURS_TEXT = "Sunday: Closed · Monday: 10:00 AM – 1:00 PM · Tuesday–Friday: 10:00 AM – 6:00 PM · Saturday: 9:30 AM – 5:00 PM";
+  var FALLBACK = "I don't have that detail in front of me — Paul can answer it directly. Call the shop at <a href='" + PHONE_TEL + "'>" + PHONE_DISPLAY + "</a>, or grab a slot on the <a href='" + BOOK + "' target='_blank' rel='noopener'>booking page</a> and ask in person.";
+
+  function answer(q){
+    var s = " " + q.toLowerCase() + " ";
+    function has(){ for (var i=0;i<arguments.length;i++){ if (s.indexOf(arguments[i]) !== -1) return true; } return false; }
+
+    if (has("price","cost","how much","charge","rate")){
+      return "The full session — <strong>Haircut / Hot Towel / Hair Enhancement</strong> — is <strong>$45</strong> and takes about 1 hour. You can book it here: <a href='" + BOOK + "' target='_blank' rel='noopener'>Square booking</a>. For anything else price-wise, call Paul at <a href='" + PHONE_TEL + "'>" + PHONE_DISPLAY + "</a>.";
+    }
+    if (has("hour","open","close","when","sunday","monday","tuesday","wednesday","thursday","friday","saturday","weekend")){
+      return "Shop hours — " + HOURS_TEXT + ". Booking online is open anytime, even when the shop is closed.";
+    }
+    if (has("book","appointment","schedule","reserve","slot","square")){
+      return "Booking is quick on Paul's Square page: <a href='" + BOOK + "' target='_blank' rel='noopener'>Book an appointment</a> — pick your service and time and you'll get a confirmation. Prefer to talk first? Call <a href='" + PHONE_TEL + "'>" + PHONE_DISPLAY + "</a>.";
+    }
+    if (has("where","address","located","location","directions","map","amarillo","olsen")){
+      return "The shop is at <strong>3801 Olsen Blvd, Amarillo, TX 79109</strong>. Here's a map link: <a href='https://www.google.com/maps/search/?api=1&query=3801+Olsen+Blvd+Amarillo+TX+79109' target='_blank' rel='noopener'>Get directions</a>.";
+    }
+    if (has("phone","call","number","contact","email","reach")){
+      return "You can reach Paul at <a href='" + PHONE_TEL + "'>" + PHONE_DISPLAY + "</a> or by email at <a href='mailto:paulcoone24@gmail.com'>paulcoone24@gmail.com</a>.";
+    }
+    if (has("instagram","insta","facebook","social","follow","photos","pictures","gallery","work")){
+      return "Paul posts his cuts on Instagram — follow <a href='https://www.instagram.com/_wallydarkfader05' target='_blank' rel='noopener'>@_wallydarkfader05</a> to see the latest fades. He's also on <a href='https://www.facebook.com/profile.php?id=100033966816747' target='_blank' rel='noopener'>Facebook</a>.";
+    }
+    if (has("fade","fades","skin fade","taper","line up","lineup")){
+      return "Fades are Paul's signature — it's what Wally Dark Fader is known for, and his Instagram is full of them. The full session (Haircut / Hot Towel / Hair Enhancement, $45, 1 hour) is booked here: <a href='" + BOOK + "' target='_blank' rel='noopener'>Square booking</a>.";
+    }
+    if (has("beard","hot towel","towel","enhancement","service","services","haircut","cut")){
+      return "The main service is the <strong>Haircut / Hot Towel / Hair Enhancement</strong> session — $45, about 1 hour: a precision cut with Paul's fade work, a hot towel finish, and hair enhancement. Beard and detail work is part of Paul's chair work too. Book here: <a href='" + BOOK + "' target='_blank' rel='noopener'>Square booking</a>, or call <a href='" + PHONE_TEL + "'>" + PHONE_DISPLAY + "</a> with questions.";
+    }
+    if (has("paul","who","owner","barber")){
+      return "Wally Dark Fader is <strong>Paul Coone</strong>, a solo barber in Amarillo, TX. One chair, one barber — every appointment is Paul himself. Book here: <a href='" + BOOK + "' target='_blank' rel='noopener'>Square booking</a>.";
+    }
+    if (has("walk","appointment only","need an appointment")){
+      return "Booking ahead on Square is the sure way to lock in your time: <a href='" + BOOK + "' target='_blank' rel='noopener'>Book here</a>. For same-day questions, call Paul at <a href='" + PHONE_TEL + "'>" + PHONE_DISPLAY + "</a>.";
+    }
+    if (has("hi","hello","hey","yo ","sup")){
+      return "Hey! Welcome to Wally Dark Fader. Ask me about the haircut service and price, shop hours, directions, or booking — or tap <a href='" + BOOK + "' target='_blank' rel='noopener'>here to book</a> right now.";
+    }
+    if (has("thank","thanks","great","cool","bet")){
+      return "Anytime. When you're ready, your slot is one tap away: <a href='" + BOOK + "' target='_blank' rel='noopener'>Book on Square</a> — or call <a href='" + PHONE_TEL + "'>" + PHONE_DISPLAY + "</a>.";
+    }
+    return FALLBACK;
+  }
+
+  var fab = document.getElementById("chatFab");
+  var panel = document.getElementById("chatPanel");
+  var body = document.getElementById("chatBody");
+  var form = document.getElementById("chatForm");
+  var input = document.getElementById("chatText");
+  var greeted = false;
+
+  function addMsg(html, who){
+    var d = document.createElement("div");
+    d.className = "msg " + who;
+    d.innerHTML = html;
+    body.appendChild(d);
+    body.scrollTop = body.scrollHeight;
+  }
+  function openChat(){
+    panel.classList.add("open");
+    if (!greeted){
+      greeted = true;
+      addMsg("Hey, welcome to <strong>Wally Dark Fader</strong> — Paul Coone's barber shop in Amarillo. Ask me about the haircut service, hours, directions, or booking.", "bot");
+    }
+    input.focus();
+  }
+  fab.addEventListener("click", function(){
+    if (panel.classList.contains("open")) panel.classList.remove("open"); else openChat();
+  });
+  document.getElementById("chatClose").addEventListener("click", function(){ panel.classList.remove("open"); });
+  document.querySelectorAll("#chatChips button").forEach(function(b){
+    b.addEventListener("click", function(){
+      var q = b.getAttribute("data-q");
+      addMsg(q, "user");
+      setTimeout(function(){ addMsg(answer(q), "bot"); }, 250);
+    });
+  });
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var q = input.value.trim();
+    if (!q) return;
+    addMsg(q.replace(/</g,"&lt;"), "user");
+    input.value = "";
+    setTimeout(function(){ addMsg(answer(q), "bot"); }, 250);
+  });
+})();
+</script>
+</body>
+</html>
